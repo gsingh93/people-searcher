@@ -1,0 +1,11 @@
+# You can comment out URLs using the '#' character
+
+https://radaris.com/ng/search?ff={first_name}&fl={last_name}&fs={state}&fc={city}
+https://www.whitepages.com/name/{first_name}-{last_name}/{city}-{state_abbrev}?fs=1&searchedName={first_name}%20{last_name}&searchedLocation={city},%20{state_abbrev}
+https://www.truepeoplesearch.com/results?name={first_name}%20{last_name}&citystatezip={city},%20{state_abbrev}
+https://www.azerch.com/Name/{last_name}/{first_name}/
+https://www.locatepeople.org/{first_name}-{last_name}/
+https://www.mylife.com/pub-multisearch.pubview?search={first_name}%20{last_name}
+https://www.peoplefinders.com/people/{first_name}-{last_name}/{state_abbrev}/{city}
+https://spokeo.com/{first_name}-{last_name}
+https://www.intelius.com/search/?firstName={first_name}&lastName={last_name}&city={city}&state={state_abbrev}
