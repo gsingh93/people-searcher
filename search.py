@@ -3,6 +3,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from argparse import ArgumentParser
+from typing import Dict
 import logging
 import os
 
@@ -107,6 +108,26 @@ def parse_args():
     return argparser.parse_args()
 
 
+def warn_on_missing_template_arguments(
+    format_args: Dict[str, str], template_url: str
+):
+    first_warning = False
+
+    for key, value in format_args.items():
+        # See if the template URL uses the template argument and if the
+        # value of that argument was not set
+        if value == '' and f'{{{key}}}' in template_url:
+            # If this is the first template argument that's missing, print
+            # the template URL in a warning message
+            if not first_warning:
+                logger.warning(
+                    f'Template URL "{template_url}" uses template parameter(s) that were not provided'
+                )
+                first_warning = True
+
+            logger.warning(f'Template parameter "{key}" was not provided')
+
+
 def main():
     args = parse_args()
     logger.setLevel(getattr(logging, args.log_level.upper()))
@@ -157,6 +178,11 @@ def main():
 
     for i, template_url in enumerate(template_urls):
         logger.info(f'Formating template URL {template_url}')
+
+        # Display a warning if the template URL uses any template parameters
+        # but those parameters weren't provided
+        warn_on_missing_template_arguments(format_args, template_url)
+
         url = template_url.format(**format_args)
 
         # Navigate to the URL
