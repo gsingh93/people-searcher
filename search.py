@@ -117,7 +117,7 @@ def main():
         'last_name': args.last_name.lower(),
         'city': args.city,
         'state': args.state,
-        'state_abbrev': us_state_to_abbrev.get(args.state, ''),
+        'state_abbrev': us_state_to_abbrev.get(args.state.lower(), ''),
         'min_age': args.min_age,
         'max_age': args.max_age,
     }
