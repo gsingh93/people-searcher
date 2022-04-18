@@ -85,6 +85,12 @@ def parse_args():
     argparser.add_argument('-l', '--last_name', required=True)
     argparser.add_argument('-c', '--city', default='')
     argparser.add_argument('-s', '--state', default='')
+    argparser.add_argument(
+        '-p',
+        '--phone-number',
+        default='',
+        help='Must be a 9 digit number with no country code or dashes',
+    )
     argparser.add_argument('--min-age', default='')
     argparser.add_argument('--max-age', default='')
 
@@ -118,6 +124,7 @@ def main():
         'city': args.city,
         'state': args.state,
         'state_abbrev': us_state_to_abbrev.get(args.state.lower(), ''),
+        'phone_number': args.phone_number,
         'min_age': args.min_age,
         'max_age': args.max_age,
     }
